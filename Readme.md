@@ -1,61 +1,110 @@
-Ai Based autoscaling feauture is an automated solution designed to mark attendance by identifying individuals through their facial features. Traditional attendance methods such as manual registers, RFID cards, and fingerprint machines are time-consuming, prone to proxy attendance, unhygienic, and inefficient for large organizations.
+Zero-Downtime Deployment System using Kubernetes
+4
+Project Overview
 
-This project leverages Computer Vision and Machine Learning techniques to recognize faces in real time and automatically record attendance in a secure database. The system provides a fast, contactless, and accurate attendance solution, suitable for educational institutions and organizations.
+This project demonstrates how to deploy a web application without any service interruption using Kubernetes rolling updates.
+The system ensures high availability by gradually replacing old application instances with new ones while keeping the service live for users.
 
-🎯 Objectives
+Zero-downtime deployment is a critical DevOps practice used in production environments to avoid outages during application updates.
 
-To automate the attendance process using face recognition technology
+Objectives
 
-To eliminate proxy attendance and ensure accurate identification of individuals
+Deploy applications with no downtime
 
-To store and manage attendance records digitally in a database
+Implement rolling update strategy
 
-To generate daily, weekly, and monthly attendance reports
+Ensure continuous service availability
 
-To reduce manual effort and improve operational efficiency
+Demonstrate real-world DevOps deployment practices
 
-⚙️ Methodology
+Understand Kubernetes Deployment & Service concepts
 
-The Smart Attendance System follows a structured workflow:
+Tools & Technologies Used
 
-Dataset Collection
-Multiple face images of each user are captured using a webcam and stored in a dataset directory.
+Kubernetes – Container orchestration & rolling updates
 
-Image Preprocessing
-Captured images are converted to grayscale and face regions are extracted for better recognition accuracy.
+Docker – Application containerization
 
-Model Training
-The LBPH (Local Binary Patterns Histogram) algorithm is used to train a face recognition model using labeled face images.
+Nginx – Web server for application hosting
 
-Real Time Face Detection & Recognition
-The trained model detects faces in real time and matches them with stored identities.
+GitHub – Version control & repository
 
-Attendance Marking
-On successful recognition, attendance is automatically recorded with user ID, date, and timestamp.
+Project Architecture
 
-Data Storage & Report Generation
-Attendance data is stored securely in a database and can be used for report generation.
+Application is containerized using Docker
 
-🛠 Tools & Technologies Used
+Kubernetes Deployment manages multiple replicas
 
-Python – Core programming language
+Kubernetes Service load-balances traffic
 
-OpenCV – Face detection and recognition
+Rolling update replaces pods one-by-one
 
-NumPy & Pandas – Data processing
+Users experience no downtime
 
-MySQL / SQLite – Attendance database
+Project Structure
+zero-downtime-deployment/
+│── app/
+│   └── index.html
+│── Dockerfile
+│── deployment.yaml
+│── service.yaml
+│── README.md
 
-LBPH Algorithm – Face recognition model
+ Application Versions
 
-Git & GitHub – Version control and collaboration
+Version 1: Initial application deployment
 
+Version 2: Updated application deployed without downtime
 
+The change between versions is visible in the web page content.
 
-🧾 Git Commands Used
+Docker Configuration
 
-The following Git commands were used during the project:
+Base image: Nginx
 
+Application files copied to Nginx default directory
+
+Lightweight and production-ready container
+
+ Kubernetes Deployment Strategy
+
+Replicas: 3 (ensures high availability)
+
+Strategy: RollingUpdate
+
+maxUnavailable: 1
+
+maxSurge: 1
+
+This configuration ensures:
+
+At least 2 pods are always running
+
+Traffic is never interrupted
+
+ Kubernetes Service
+
+Type: NodePort
+
+Provides a stable endpoint for users
+
+Automatically load-balances traffic across pods
+
+Zero-Downtime Deployment Process
+
+Deploy application version 1
+
+Application runs with multiple replicas
+
+Update Docker image to version 2
+
+Kubernetes starts new pods
+
+Old pods terminate gradually
+
+Service remains available throughout
+
+✅ No downtime experienced
 
 
 git init
@@ -77,6 +126,6 @@ git log --oneline
 
 
 
-The Smart Attendance System using Face Recognition successfully demonstrates the use of Computer Vision and Machine Learning for automating attendance processes. The system eliminates manual errors, prevents proxy attendance, and improves efficiency by providing a secure and contactless solution.
+
 
 Additionally, this project provided hands-on experience with Git Bash, GitHub, branching, merging, conflict resolution, and documentation best practices, making it a complete and industry-relevant implementation.
