@@ -1,4 +1,4 @@
-# AI-Based-ZeroDowntime
+
 <img width="2862" height="1153" alt="Screenshot 2026-01-03 055357" src="https://github.com/user-attachments/assets/c16c766a-5a74-40ee-9e6f-7208310e945d" />
 
 <img width="2879" height="1188" alt="Screenshot 2026-01-02 132700" src="https://github.com/user-attachments/assets/8aed393e-ecce-4d5e-b978-7d0410a1cd4e" />
@@ -6,150 +6,227 @@
 <img width="2337" height="1543" alt="Screenshot 2025-12-22 221233" src="https://github.com/user-attachments/assets/c6f7658a-d917-48e1-88e0-a3869d8f6d6e" />
 <img width="2879" height="1319" alt="Screenshot 2025-12-22 221540" src="https://github.com/user-attachments/assets/2c333637-2ac9-425e-8c53-16c2850d9a6d" />
 <img width="2631" height="1027" alt="Screenshot 2025-12-22 222742" src="https://github.com/user-attachments/assets/81399ec5-fb25-4b54-9e33-2774616ba5a7" />
-This project demonstrates how to deploy a web application without any service interruption using Kubernetes rolling updates.
-The system ensures high availability by gradually replacing old application pods with new ones while keeping the application accessible to users at all times.
+The Smart Attendance System is an AI-driven automated solution designed to mark attendance using Artificial Intelligence and Computer Vision.
+The system recognizes students’ faces from live classroom video feeds and automatically records attendance without requiring students to stand in front of a camera or perform any manual action.
 
-Zero-downtime deployment is a core DevOps practice used in real-world production systems.
+This project aims to replace traditional attendance methods such as roll calls, RFID cards, and fingerprint scanners with a contactless, efficient, and intelligent system.
 
 🎯 Objectives
 
-Achieve zero downtime during application updates
+Automate the attendance process using AI
 
-Implement rolling update strategy
+Reduce time wasted during lectures
 
-Maintain continuous user access
+Prevent proxy attendance
 
-Demonstrate real-world DevOps deployment workflow
+Improve accuracy and reliability
 
-Understand Kubernetes Deployments and Services
+Enable real-time, contactless attendance marking
 
-🧰 Tools & Technologies
+🛠️ Technologies Used
 
-Kubernetes – Orchestration & rolling updates
+Programming Language: Python
 
-Docker – Application containerization
+Computer Vision: OpenCV
 
-Nginx – Serving the web application
+Machine Learning / Deep Learning: Face Recognition Models
 
-GitHub – Version control & collaboration
+Libraries: NumPy, Pandas, OpenCV
 
-🏗️ Architecture
+Database: SQLite / CSV
 
-Application is packaged into a Docker container
+Interface: Web or Desktop (optional)
 
-Kubernetes Deployment runs multiple replicas (pods)
+⚙️ System Implementation (Working Flow)
+Step 1: Dataset Creation
 
-Kubernetes Service load-balances incoming traffic
+Student face images are collected during registration.
 
-Rolling updates replace pods one at a time
+Multiple images are captured under different angles and lighting conditions.
 
-Users experience no downtime
+Images are stored with unique student IDs.
 
-📂 Project Structure
-zero-downtime-deployment/
-│── app/
-│   └── index.html
-│── Dockerfile
-│── deployment.yaml
-│── service.yaml
-│── README.md
+Step 2: Face Encoding
 
-🐳 Docker Setup
+Facial features are extracted using AI models.
 
-Base image: nginx
+Encodings are stored for future matching.
 
-Application files copied to Nginx HTML directory
+Step 3: Live Face Detection
 
-Lightweight and production-ready container image
+Classroom camera captures real-time video.
 
-☸️ Kubernetes Deployment Strategy
+Multiple faces are detected simultaneously.
 
-Replicas: 3
+Step 4: Face Recognition
 
-Strategy: RollingUpdate
+Detected faces are compared with stored encodings.
 
-maxUnavailable: 1
+If a match is found, the student is identified.
 
-maxSurge: 1
+Step 5: Attendance Marking
 
-✔ At least 2 pods always running
-✔ No interruption to live traffic
+Attendance is marked only if the student is present for a defined duration.
 
-🌐 Kubernetes Service
+Duplicate entries are avoided.
 
-Type: NodePort
+Step 6: Data Storage
 
-Acts as a single access point for users
+Attendance data is stored with:
 
-Automatically load-balances traffic across pods
+Student ID
 
-🔄 Zero-Downtime Deployment Workflow
+Date
 
-Deploy application version 1
+Time
 
-Application runs with multiple replicas
+Session details
 
-Update Docker image to version 2
+🗂️ Project Folder Structure
+Smart-Attendance-System/
+│
+├── dataset/
+│   ├── student_1/
+│   │   ├── img1.jpg
+│   │   ├── img2.jpg
+│   ├── student_2/
+│
+├── encodings/
+│   └── face_encodings.pkl
+│
+├── src/
+│   ├── capture_faces.py
+│   ├── train_model.py
+│   ├── face_recognition.py
+│   ├── attendance_marker.py
+│
+├── database/
+│   └── attendance.db
+│
+├── output/
+│   └── attendance_report.csv
+│
+├── requirements.txt
+├── README.md
+└── main.py
 
-Kubernetes creates new pods
+📐 Data Flow Diagrams (DFDs)
+🔹 DFD Level 0 (Context Diagram)
 
-Old pods terminate gradually
+Entities:
 
-Application remains accessible throughout
+Student
 
-✅ Zero downtime achieved
+Camera
 
-🧪 Verification
+Smart Attendance System
 
-Monitor rolling updates:
+Database
 
-kubectl get pods -w
+Flow:
+
+Student → Camera → AI System → Attendance Database
+
+🔹 DFD Level 1
+
+Camera
+  │
+  ▼
+[1] Capture Video Feed
+  │
+  ▼
+[2] Detect Faces
+  │
+  ▼
+[3] Recognize Faces ◄──── Student Face Dataset
+  │
+  ▼
+[4] Mark Attendance
+  │
+  ▼
+[5] Store Attendance ────► Attendance Database
 
 
-You will observe:
 
-New pods starting
+🔹 DFD Level 2 (Detailed)
 
-Old pods terminating
+Live Video
+   │
+   ▼
+Frame Extraction
+   │
+   ▼
+Face Detection
+   │
+   ▼
+Feature Extraction
+   │
+   ▼
+Face Matching ◄──── Face Encodings Dataset
+   │
+   ▼
+Attendance Validation
+   │
+   ▼
+Attendance Database
 
-Application always reachable
 
-🧠 Key DevOps Concepts Demonstrated
 
-Zero-downtime deployment
+🚀 How to Run the Project
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/smart-attendance-system.git
+cd smart-attendance-system
 
-Rolling updates
+2️⃣ Install Dependencies
+pip install -r requirements.txt
 
-Container orchestration
+3️⃣ Register Students
+python src/capture_faces.py
 
-Load balancing
+4️⃣ Train the Model
+python src/train_model.py
 
-High availability
+5️⃣ Start Attendance System
+python main.py
 
-Production-ready deployment strategy
+📊 Output
 
-🗣️ Interview / Viva Explanation
+Attendance is saved in:
 
-“This project implements zero-downtime deployment using Kubernetes rolling updates, ensuring application updates without interrupting live user traffic.”
+Database (SQLite)
 
-📸 Screenshots (Recommended)
+CSV report for analysis
 
-Kubernetes pods running
+Each entry contains:
 
-Rolling update in progress
+Student ID
 
-Application Version 1
+Date
 
-Application Version 2
+Time
 
-Service exposure
+Status (Present/Absent)
+
+🔐 Security Considerations
+
+No biometric data is shared externally
+
+Facial data is stored locally
+
+Duplicate attendance entries are prevented
 
 🔮 Future Enhancements
 
-CI/CD pipeline using Jenkins
+Emotion & engagement detection
 
-Blue-Green deployment strategy
+Mask-aware recognition
 
-Monitoring with Prometheus & Grafana
+Mobile app integration
 
-Cloud deployment on AWS EKS / GKE
+Cloud-based analytics dashboard
+
+Late entry & early exit tracking
+
+📌 Conclusion
+
+This AI-Based Smart Attendance System provides an efficient, scalable, and secure alternative to traditional attendance methods. By leveraging Artificial Intelligence and Computer Vision, the system ensures accuracy, saves time, and enhances classroom productivity.
