@@ -6,150 +6,150 @@
 <img width="2337" height="1543" alt="Screenshot 2025-12-22 221233" src="https://github.com/user-attachments/assets/c6f7658a-d917-48e1-88e0-a3869d8f6d6e" />
 <img width="2879" height="1319" alt="Screenshot 2025-12-22 221540" src="https://github.com/user-attachments/assets/2c333637-2ac9-425e-8c53-16c2850d9a6d" />
 <img width="2631" height="1027" alt="Screenshot 2025-12-22 222742" src="https://github.com/user-attachments/assets/81399ec5-fb25-4b54-9e33-2774616ba5a7" />
-The Smart Attendance System Using Face Recognition is an automated solution designed to mark attendance by identifying individuals through their facial features. Traditional attendance methods such as manual registers, RFID cards, and fingerprint-based systems are time-consuming, prone to proxy attendance, unhygienic, and inefficient for large groups.
+This project demonstrates how to deploy a web application without any service interruption using Kubernetes rolling updates.
+The system ensures high availability by gradually replacing old application pods with new ones while keeping the application accessible to users at all times.
 
-This project leverages Computer Vision and Machine Learning to recognize faces in real time and automatically record attendance into a digital database. Along with application development, this project strongly focuses on Git Bash and GitHub version control practices, following an industry-standard workflow.
+Zero-downtime deployment is a core DevOps practice used in real-world production systems.
 
-🎯 Objectives of the Project
+🎯 Objectives
 
-To automate the attendance process using face recognition technology
+Achieve zero downtime during application updates
 
-To eliminate proxy attendance and ensure accurate identification
+Implement rolling update strategy
 
-To store attendance records digitally in a database
+Maintain continuous user access
 
-To handle real-world scenarios like early exit or temporary absence
+Demonstrate real-world DevOps deployment workflow
 
-To gain hands-on experience with Git Bash and GitHub workflows
+Understand Kubernetes Deployments and Services
 
-To implement branching, merging, and conflict resolution
+🧰 Tools & Technologies
 
-🛠 Tools & Technologies Used
+Kubernetes – Orchestration & rolling updates
 
-Python – Core programming language
+Docker – Application containerization
 
-OpenCV – Face detection and recognition
+Nginx – Serving the web application
 
-LBPH Algorithm – Face recognition model
+GitHub – Version control & collaboration
 
-NumPy & Pandas – Data processing
+🏗️ Architecture
 
-SQLite / MySQL – Attendance database
+Application is packaged into a Docker container
 
-Git Bash – Local version control
+Kubernetes Deployment runs multiple replicas (pods)
 
-GitHub – Remote repository management
+Kubernetes Service load-balances incoming traffic
 
-⚙️ Project Methodology
+Rolling updates replace pods one at a time
 
-Dataset Collection
-Face images are captured using a webcam and stored in a dataset directory.
+Users experience no downtime
 
-Image Preprocessing
-Images are converted to grayscale and face regions are extracted.
+📂 Project Structure
+zero-downtime-deployment/
+│── app/
+│   └── index.html
+│── Dockerfile
+│── deployment.yaml
+│── service.yaml
+│── README.md
 
-Model Training
-The LBPH algorithm is trained using labeled face images.
+🐳 Docker Setup
 
-Real-Time Face Recognition
-Faces are detected and matched with trained data during live camera input.
+Base image: nginx
 
-Attendance Marking
-Attendance is recorded automatically with ID, date, and timestamp.
+Application files copied to Nginx HTML directory
 
-Presence Verification
-Attendance is validated based on presence duration to handle early exit cases.
+Lightweight and production-ready container image
 
-📁 Project Folder Structure
-attendance/
-├── dataset/                 # Captured face images
-├── src/
-│   ├── dataset_capture.py   # Face dataset collection
-│   ├── train_model.py       # Model training
-│   ├── recognize_face.py    # Face recognition & attendance
-│   └── database.py          # Database logic
-├── trainer/                 # Trained model files
-├── .gitignore               # Ignored files & folders
-├── README.md                # Project documentation
-└── requirements.txt         # Dependencies
+☸️ Kubernetes Deployment Strategy
 
-🌟 Unique Features of the Project
+Replicas: 3
 
-Confidence-based face recognition to prevent false detection
+Strategy: RollingUpdate
 
-Duplicate attendance prevention per session
+maxUnavailable: 1
 
-Presence verification window to handle washroom/early exit cases
+maxSurge: 1
 
-Entry–exit based attendance logic
+✔ At least 2 pods always running
+✔ No interruption to live traffic
 
-Secure and automated attendance workflow
+🌐 Kubernetes Service
 
-Industry-level Git & GitHub usage
+Type: NodePort
 
-🔄 Git & GitHub Workflow
+Acts as a single access point for users
 
-This project strictly follows professional Git and GitHub practices:
+Automatically load-balances traffic across pods
 
-🔹 Repository Initialization
-git init
+🔄 Zero-Downtime Deployment Workflow
 
-🔹 Staging & Commit
-git add .
-git commit -m "Meaningful commit message"
+Deploy application version 1
 
+Application runs with multiple replicas
 
-Minimum 10 meaningful commits were created
+Update Docker image to version 2
 
-Each commit represents a logical change
+Kubernetes creates new pods
 
-🌿 Branching Strategy
+Old pods terminate gradually
 
-The following branches were created:
+Application remains accessible throughout
 
-main – Stable production branch
+✅ Zero downtime achieved
 
-feature – New feature development
+🧪 Verification
 
-test – Testing changes
+Monitor rolling updates:
 
-bugfix – Bug fixing
-
-experiment – Experimental changes
-
-git branch feature
-git branch test
-git branch bugfix
-git branch experiment
+kubectl get pods -w
 
 
-All branches were pushed to GitHub.
+You will observe:
 
-🔀 Merge & Merge Conflict Resolution
+New pods starting
 
-Branches were merged into the main branch
+Old pods terminating
 
-A merge conflict was intentionally created in README.md
+Application always reachable
 
-Conflict was resolved manually by editing the file
+🧠 Key DevOps Concepts Demonstrated
 
-Final changes were committed successfully
+Zero-downtime deployment
 
-This demonstrates real-world Git conflict handling.
+Rolling updates
 
-🌍 GitHub Remote Operations
+Container orchestration
 
-The local repository was connected to GitHub using SSH.
+Load balancing
 
-🔹 Remote Connection
-git remote add origin <repository-url>
-git remote -v
+High availability
 
-🔹 Push Operation
-git push -u origin main
+Production-ready deployment strategy
 
-🔹 Pull Operation
-git pull origin main
+🗣️ Interview / Viva Explanation
 
-🔹 Clone Operation
-git clone <repository-url>
+“This project implements zero-downtime deployment using Kubernetes rolling updates, ensuring application updates without interrupting live user traffic.”
+
+📸 Screenshots (Recommended)
+
+Kubernetes pods running
+
+Rolling update in progress
+
+Application Version 1
+
+Application Version 2
+
+Service exposure
+
+🔮 Future Enhancements
+
+CI/CD pipeline using Jenkins
+
+Blue-Green deployment strategy
+
+Monitoring with Prometheus & Grafana
+
+Cloud deployment on AWS EKS / GKE
