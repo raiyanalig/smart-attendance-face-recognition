@@ -173,7 +173,70 @@ Attendance Validation
    ▼
 Attendance Database
 
+🔧 Commands Used During Project Development
+🔹 Git Configuration
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
 
+🔹 Initialize Repository
+git init
+
+🔹 Check Repository Status
+git status
+
+🔹 Add Files to Staging Area
+git add .
+
+🔹 Commit Changes
+git commit -m "Initial commit - Smart Attendance System (AI-based, passive)"
+
+🔹 Connect Local Repository to GitHub
+git remote add origin https://github.com/username/smart-attendance-system.git
+
+🔹 Push Code to GitHub
+git branch -M main
+git push -u origin main
+
+🔹 Pull Latest Changes
+git pull origin main
+
+🔹 Clone Repository
+git clone https://github.com/username/smart-attendance-system.git
+
+🔹 View Commit History
+git log
+git log --oneline
+
+🔹 Create and Switch Branch (If Used)
+git checkout -b feature-attendance
+
+🔹 Merge Branch into Main
+git checkout main
+git merge feature-attendance
+
+🔹 Fetch Updates Without Merge
+git fetch origin
+
+🔹 Temporarily Save Changes
+git stash
+git stash apply
+
+🔹 Undo Last Commit (If Required)
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+
+🧪 Project Execution Commands
+🔹 Install Dependencies
+pip install -r requirements.txt
+
+🔹 Capture Student Faces (Dataset Creation)
+python src/capture_faces.py
+
+🔹 Train Face Recognition Model
+python src/train_model.py
+
+🔹 Run Smart Attendance System
+python main.py
 
 🚀 How to Run the Project
 1️⃣ Clone the Repository
